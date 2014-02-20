@@ -18,7 +18,7 @@ public class InterfaceAccesBD {
     
     private boolean active;
     private String id;
-    private boolean admin;
+    private int admin;
     
     public InterfaceAccesBD() throws SQLException
     {
@@ -35,12 +35,17 @@ public class InterfaceAccesBD {
             active = true;
             this.id = id;
             acces.reqType.setString(1, id);
-            admin = acces.reqType.executeQuery().getBoolean("ADMIN");
+            admin = acces.reqType.executeQuery().getInt("ADMIN");
         }
         else
         {
             active = false;
         }
         return active;
+    }
+    
+    public boolean estAdmin()
+    {
+        return (admin == 1);
     }
 }
