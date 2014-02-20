@@ -8,6 +8,7 @@ package Vues;
 import AccesBD.InterfaceAccesBD;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 
 /**
  *
@@ -72,11 +73,11 @@ public class FenetreConnexion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblIdentifiant)
                         .addGap(74, 74, 74)
                         .addComponent(txtIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -89,8 +90,8 @@ public class FenetreConnexion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(220, 220, 220)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblIdentifiant))
@@ -130,6 +131,12 @@ public class FenetreConnexion extends javax.swing.JFrame {
 
     private void btnConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnecterActionPerformed
         // TODO add your handling code here:
+        try{
+            InterfaceAccesBD iab    = new InterfaceAccesBD();
+            iab.connect(txtIdentifiant.getText(), String.valueOf(txtMotDePasse.getPassword()));
+        }catch(SQLException e){
+            
+        }
     }//GEN-LAST:event_btnConnecterActionPerformed
 
     /**
