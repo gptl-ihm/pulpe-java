@@ -73,11 +73,11 @@ public class FenetreConnexion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblIdentifiant)
                         .addGap(74, 74, 74)
                         .addComponent(txtIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -90,8 +90,8 @@ public class FenetreConnexion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(228, 228, 228)
+                .addComponent(jLabel1)
+                .addGap(220, 220, 220)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblIdentifiant))
@@ -133,9 +133,14 @@ public class FenetreConnexion extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             InterfaceAccesBD iab    = new InterfaceAccesBD();
-            iab.connect(txtIdentifiant.getText(), String.valueOf(txtMotDePasse.getPassword()));
+            if(iab.connect(txtIdentifiant.getText(), String.valueOf(txtMotDePasse.getPassword()))){
+                 System.out.println("Connexion reussi");
+            }else{
+                System.out.println("Connexion echoué");
+            }
+           
         }catch(SQLException e){
-            
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnConnecterActionPerformed
 
